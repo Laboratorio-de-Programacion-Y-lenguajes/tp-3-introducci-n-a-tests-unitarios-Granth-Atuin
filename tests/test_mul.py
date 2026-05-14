@@ -11,12 +11,15 @@ def test_mul_positivos():
     assert mul(3, 4) == 12
 
 
-# --- TU TURNO ---
-# Agregá tests para los siguientes casos:
-#   - Multiplicar por cero
-#   - Multiplicar dos números negativos (resultado positivo)
-#   - Multiplicar un positivo y un negativo (resultado negativo)
-#   - Multiplicar por 1 (elemento neutro)
-#   - Multiplicar dos decimales (float)
-#
-# Pista: podés usar @pytest.mark.parametrize para probar varios casos a la vez.
+@pytest.mark.parametrize("a,b,expected", [
+    (5, 0, 0),
+    (0, 5, 0),
+    (-2, -3, 6),
+    (2, -3, -6),
+    (-4, 5, -20),
+    (7, 1, 7),
+    (1, -5, -5),
+    (1.5, 2.0, 3.0),
+])
+def test_mul_parametrizado(a, b, expected):
+    assert pytest.approx(mul(a, b)) == expected

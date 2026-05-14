@@ -11,20 +11,13 @@ def test_add_suma_positivos():
     assert add(1, 2) == 3
 
 
-# --- TU TURNO ---
-# Agregá tests para los siguientes casos:
-#   - Sumar dos números negativos
-#   - Sumar un número positivo y uno negativo
-#   - Sumar con cero
-#   - Sumar dos números decimales (float)
-#
-# Pista: podés usar @pytest.mark.parametrize para probar varios casos a la vez.
-#
-# Ejemplo de test parametrizado:
-#
-# @pytest.mark.parametrize("a,b,expected", [
-#     (..., ..., ...),
-#     (..., ..., ...),
-# ])
-# def test_add_parametrizado(a, b, expected):
-#     assert add(a, b) == expected
+@pytest.mark.parametrize("a,b,expected", [
+    (-2, -3, -5),
+    (5, -3, 2),
+    (-4, 7, 3),
+    (0, 5, 5),
+    (5, 0, 5),
+    (1.5, 2.5, 4.0),
+])
+def test_add_parametrizado(a, b, expected):
+    assert add(a, b) == expected
